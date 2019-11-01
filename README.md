@@ -1,6 +1,7 @@
 Technos used :
 
-* HTML5
-* CSS 3
+* Bootstrap 4
 * Jquery
 * Greensock (TweenMax)
+* HTML5
+* CSS 3
