@@ -1,2 +1,6 @@
-# CinemaBB
-Cinema BB : One page Website for fake cinema (practical works)
+Technos used :
+
+* HTML5
+* CSS 3
+* Jquery
+* Greensock (TweenMax)

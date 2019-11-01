@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name='author' content='Boris Belloc'>
+  <!-- FavIcon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+
+  <!-- CDN BOOTSTRAP 4.0 -->
+  <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'
+    integrity='sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T' crossorigin='anonymous'>
+  <!-- Custom ressources ---------->
+  <link rel='stylesheet' type='text/css' href='./assets/css/bbcinema.css' />
+
+
+  <title>BB Cinema</title>
+
+</head>
+
+<body data-spy="scroll">
+
+  <!-- TODO: anchor and navbar space -->
+
+  <!-- CONTENT -->
+
+  <!-- Section 1 -->
+  <header>
+    <nav class="navbar navbar-expand navbar-dark bg-dark  fixed-top transparent">
+      <a class="offset-2 navbar-brand">
+        <img src="/favicon-32x32.png" alt="Cinema logo"><span class="pl-2 signatureFont">Cinéma BB</span>
+      </a>
+      <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button> -->
+      <div class="collapse navbar-collapse offset-6" id="navbarNav">
+        <ul class="navbar-nav displayNone">
+          <!-- <li class="nav-item active">
+            <a class="nav-link displayNone" href="#">Home <span class="sr-only">(current)</span></a>
+          </li> -->
+          <li class="nav-item">
+            <a class="nav-link nowrap" href="#affiche">Films à l'affiche</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#infos">Infos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#carte">Carte</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#contact">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+
+    <div id="cinema" class="container-fluid">
+      <div class="row">
+        <div class="col-12 text-center img-fluid px-0 ">
+
+          <div id="cinemaPicture">
+            <div id="slogan" class="pt-4 signatureFont sizeFive colorBlacked ">
+              Cinéma BB
+              <br>
+              <p class="sizeZeroFive">Le cinéma qu'il vous plait.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </header>
+
+
+  <!-- Section 2 : Affiche -->
+  <section>
+    <a class="anchor" id="affiche"></a>
+    <div class="container">
+      <div class="row">
+        <div id="affiche" class="my-5 col-12">
+          <h1>Les films à l'affiche</h1>
+        </div>
+
+        <div class="row">
+          <div class="col-4">
+            <!-- <img class="img-fluid" src="https://via.placeholder.com/600x900" alt=""> -->
+            <img class="img-fluid movieImg" src="https://picsum.photos/600/900?random=1" alt="">
+          </div>
+          <div class="col-4">
+            <img class="img-fluid movieImg" src="https://picsum.photos/600/900?random=2" alt="">
+          </div>
+          <div class="col-4">
+            <img class="img-fluid movieImg" src="https://picsum.photos/600/900?random=3" alt="">
+          </div>
+        </div>
+
+        <div class="row mb-5">
+          <div class="my-5 col-12">
+            <h1>Description</h1>
+          </div>
+
+          <div class="silverColor">
+            <p>
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Magni neque, tempore minima eius officiis
+              magnam!
+            </p>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa nemo dolorum, reprehenderit quia amet magni
+              esse consectetur fuga eos, praesentium nam repudiandae quisquam. Dolorem cum possimus repudiandae
+              molestiae
+              obcaecati tempora accusantium cupiditate voluptates veritatis? Voluptatum cum culpa, reprehenderit eaque
+              velit, reiciendis dolore laudantium blanditiis tenetur harum, nemo quam quos assumenda.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+
+  <!-- Section 3 : Infos-->
+
+  <section>
+    <a class="anchor" id="infos"></a>
+
+    <div class="container">
+      <div class="row">
+        <div id="infos" class="my-5 mb-3 col-12">
+          <h1>Infos pratiques</h1>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-6">
+          <h3>Avantages <span class="signatureFont">Cinéma BB</span></h3>
+          <ol>
+            <li>Salles climatisées</li>
+            <li>Toutes les salles en IMAX</li>
+            <li>Son Digital Prologic Surround</li>
+          </ol>
+        </div>
+
+        <div class="col-6">
+          <table class="table table-bordered table-dark">
+            <caption>Tableau tarifs</caption>
+            <tbody>
+              <tr>
+                <th rowspan="2" class="emptyCell"></th>
+                <th colspan="2" scope="col">LUNDI AU VENDREDI</th>
+                <th rowspan="2" id="tabWeek">WEEK-END</th>
+              </tr>
+              <tr>
+                <td>de 9h à 18h</td>
+                <td>soirée</td>
+              </tr>
+              <tr>
+                <th scope="row">- 14 ans</th>
+                <td>5 €</td>
+                <td>6 €</td>
+                <td>6 €</td>
+              </tr>
+              <tr>
+                <th scope="row">Plein tarif</th>
+                <td>10 €</td>
+                <td>12 €</td>
+                <td>12,50 €</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 4 : Carte -->
+  <section>
+    <a class="anchor" id="carte"></a>
+
+    <div class="container ">
+      <div class="row">
+
+        <div class="my-5 mb-3 col-12">
+          <h1>Nous trouver</h1>
+        </div>
+
+        <div class="col-6">
+          <div class="map-responsive mb-5">
+
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2803.3196320392162!2d-73.71467618423563!3d45.36254474824149!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4cc91495631d9f45%3A0x625a1ef1c5d0d8ff!2s6%20Rue%20Hans-Selye%2C%20Ch%C3%A2teauguay%2C%20QC%2C%20Canada!5e0!3m2!1sfr!2sfr!4v1572436689855!5m2!1sfr!2sfr"
+              width="600" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+          </div>
+
+        </div>
+
+        <div class="offset-1 col-5">
+          <h4 class="mt-2">Adresse :</h4>
+          6A Rue Hans-Selye, J6k4Y8 Châteauguay, QC, Canada
+          <h4 class="mt-2">Telephone :</h4>
+
+          <a id="tel" href="tel:+33618528416">+33 618528416</a>
+
+          <h4 class="mt-2">Courriel :</h4>
+          cinemabb@silvousplait.com
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+
+  <!-- Section 5 : Contact-->
+  <section>
+    <a class="anchor" id="contact"></a>
+    <div class="container">
+      <div class="row">
+        <div class="my-5 mb-3 col-12">
+          <h1>Formulaire de contact</h1>
+        </div>
+      </div>
+      <!-- </div> -->
+      <!-- <form id="contact-form" method="post" action="contact.php" role="form"> -->
+
+      <form id="contact-form" class="mt-5" role="form">
+        <div class="offset-2 col-8">
+
+          <div class="row">
+
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="form_name">Prénom</label>
+                <input id="form_name" type="text" name="name" class="form-control"
+                  placeholder="Entrez votre prénom (obligatoire)" required="required">
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="form_lastname">Nom</label>
+                <input id="form_lastname" type="text" name="surname" class="form-control"
+                  placeholder="Entrez votre nom (obligatoire)" required="required">
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="form_email">Email</label>
+                <input id="form_email" type="email" name="email" class="form-control"
+                  placeholder="Entrez votre adresse email (obligatoire)" required="required">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="form_email">Téléphone</label>
+                <input id="form_email" type="email" name="email" class="form-control"
+                  placeholder="Numéro de téléphone (facultatif)">
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label for="form_email">Sujet</label>
+                <input id="form_email" type="email" name="email" class="form-control" placeholder="Sujet facultatif">
+              </div>
+            </div>
+
+          </div>
+
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label for="form_message">Message</label>
+                <textarea id="form_message" name="message" class="form-control"
+                  placeholder="Entrez votre message (obligatoire)" rows="4" required="required"></textarea>
+              </div>
+            </div>
+
+            <div class="offset-4 col-4">
+              <!-- <input type="submit" class="btn btn-dark " value="Envoyer"> -->
+              <button type="button" class="btn btn-dark btn-block">Envoyer</button>
+
+            </div>
+          </div>
+
+        </div>
+      </form>
+
+    </div>
+    </div>
+  </section>
+
+
+
+  <hr>
+  <!-- Section 6 -->
+
+  <section>
+    <div class="container">
+      <div class="row">
+
+        <div class="my-5 mb-3 col-12">
+          <h1>Suivez-nous sur les réseaux</h1>
+        </div>
+
+        <div class="offset-3 col-3 px-0 pointer">
+          <img src="./assets/img/facebook-square-brands.svg" alt="facebook" height="50px"> L'actu du groupe
+        </div>
+
+        <div class="offset-2 col-2 px-0 pointer">
+          <img src="./assets/img/twitter-square-brands.svg" alt="twitter" height="50px"> En court
+        </div>
+
+      </div>
+    </div>
+
+
+    <!-- ! -->
+    <div class="container p-3 mt-5 text-center ">
+      <h4>Inscrivez-vous à notre lettre mensuelle</h4>
+      <div class="row">
+
+        <div class="col-4 mx-auto mt-3">
+          <form action="#" method="Post">
+            <input id="newletter" type="email" name="email" class="form-control sharp text-center"
+              placeholder="votre adresse email">
+            <button type="button" class="btn btn-secondary btnSubscribe btn-block sharp">s'inscrire</button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+    <!-- ! -->
+  </section>
+
+
+  <footer class="page-footer font-small blue">
+    <div class="text-center py-3 sizeZeroNine mt-5"><i>© 2019 Copyright : BELLOC Boris �</i>
+      <!-- <a href="#"> BELLOC Boris</a> -->
+
+    </div>
+
+  </footer>
+
+  <!-- BUTTON GO TO TOP // "currentColor" -->
+  <div id="btnToTopContainer">
+    <button onclick="topFunction()" id="btnToTop" title="Haut de page">
+
+      <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-up" width="20" height="20"
+        class="svg-inline--fa fa-chevron-up fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 448 512">
+        <path fill="#F2C992"
+          d="M240.971 130.524l194.343 194.343c9.373 9.373 9.373 24.569 0 33.941l-22.667 22.667c-9.357 9.357-24.522 9.375-33.901.04L224 227.495 69.255 381.516c-9.379 9.335-24.544 9.317-33.901-.04l-22.667-22.667c-9.373-9.373-9.373-24.569 0-33.941L207.03 130.525c9.372-9.373 24.568-9.373 33.941-.001z">
+        </path>
+      </svg>
+    </button>
+  </div>
+
+
+
+  <!-- * jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src='https://code.jquery.com/jquery-3.4.1.slim.js'
+    integrity='sha256-BTlTdQO9/fascB1drekrDVkaKd9PkwBymMlHOiG+qLI=' crossorigin='anonymous'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js'
+    integrity='sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1' crossorigin='anonymous'>
+  </script>
+  <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js'
+    integrity='sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM' crossorigin='anonymous'>
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"></script>
+
+
+  <!-- Custom ressources ---------->
+  <script src='./assets/js/bbcinema.js'></script>
+
+</body>
+
+</html>
