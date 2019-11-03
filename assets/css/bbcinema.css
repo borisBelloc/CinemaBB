@@ -102,6 +102,10 @@ caption {
   height: 100vh;
 }
 
+/* Fix for mouse over paralax effect */
+.hideIt {
+overflow: hidden;
+}
 /* TABLE */
 .table {
   text-align: center;
