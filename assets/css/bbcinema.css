@@ -310,3 +310,7 @@ a:visited {
 .thead-darker {
   background-color:rgb(33, 36, 39)!important;
 }
+
+.panierQuantity {
+  width: 2.5em;
+}

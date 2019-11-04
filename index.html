@@ -3,7 +3,7 @@
 <head>
   <meta charset='utf-8'>
   <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <meta name='author' content='Boris Belloc'>
   <!-- FavIcon -->
@@ -118,7 +118,8 @@
           </p>
 
           <p>
-            <button type="button" class="btn btn-dark goldenBtn" data-toggle="modal" data-target="#modalReservations">Réservez votre séance</button>
+            <button type="button" class="btn btn-dark goldenBtn" data-toggle="modal"
+              data-target="#modalReservations">Réservez votre séance</button>
           </p>
         </div>
       </div>
@@ -129,63 +130,66 @@
 
   <!-- * Reservation MODALS -->
   <!-- Large modal -->
-<div id="modalReservations" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
+  <div id="modalReservations" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg">
 
       <div class="modal-content reservationModalBody">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle">Réservez votre séance</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-
-
-
-
-          <div class="modal-body">
-              <table class="table table-dark">
-                  <thead class="thead-darker">
-                    <tr>
-                      <th scope="col">Tarif</th>
-                      <th scope="col">Séance</th>
-                      <th scope="col">Quantité</th>
-                      <th scope="col">Prix Unitaire</th>
-                      <th scope="col">Prix total</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <th>-tarif</th>
-                      <td>-séance</td>
-                      <td>-quantité</td>
-                      <td>-unitaire</td>
-                      <td>-total</td>
-                    </tr>
-                  </tbody>
-                </table>
-
-
-
-
-
-
-          </div>
-
-
-
-
-
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary shadowBtn" data-dismiss="modal">FERMER</button>
-            <button type="button" class="btn btn-danger shadowBtn">SUPPRIMER RESERVATION</button>
-            <button type="button" class="btn btn-success shadowBtn">NOUVELLE RESERVATION</button>
-            <button type="button" class="btn btn-primary shadowBtn">ENREGISTRER</button>
-          </div>
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Réservez votre séance</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
 
+
+
+
+        <div class="modal-body">
+          <table class="table table-dark">
+            <thead class="thead-darker">
+              <tr>
+                <th scope="col">Tarif</th>
+                <th scope="col">Séance</th>
+                <th scope="col">Quantité</th>
+                <th scope="col">Prix Unitaire</th>
+                <th scope="col">Prix total</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th>-tarif</th>
+                <td>-séance</td>
+                <td>-quantité</td>
+                <td>-unitaire</td>
+                <td>-total</td>
+              </tr>
+            </tbody>
+          </table>
+
+
+
+
+
+
+
+
+        </div>
+
+
+
+
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary shadowBtn" data-dismiss="modal">FERMER</button>
+          <button type="button" class="btn btn-danger shadowBtn">SUPPRIMER RESERVATION</button>
+          <button type="button" class="btn btn-success shadowBtn">NOUVELLE RESERVATION</button>
+          <button type="button" class="btn btn-primary shadowBtn">ENREGISTRER</button>
+        </div>
+      </div>
+
+    </div>
   </div>
-</div>
 
 
 
@@ -194,6 +198,57 @@
 
   <!-- Section 3 : Infos-->
 
+
+  <!-- ! -->
+  <table class="table table-dark">
+    <thead class="thead-darker">
+      <tr>
+        <th scope="col">Tarif</th>
+        <th scope="col">Séance</th>
+        <th scope="col">Quantité</th>
+        <th scope="col">Prix Unitaire</th>
+        <th scope="col">Prix total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th id="toto">-tarif</th>
+        <td>-séance</td>
+        <td>-quantité</td>
+        <td>-unitaire</td>
+        <td>-total</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- ! -->
+  <!-- ! -->
+  <!-- ! -->
+  <!-- * Tarifs -->
+  <select id="panierSelectTarifs" class="changeableSelect">
+    <option>choix tarifs</option>
+  </select>
+
+  <!-- * -->
+  <select id="panierSeances" class="changeableSelect">
+    <option>choix séances</option>
+  </select>
+
+  <!-- * -->
+  <input id="quantityPlacePanier" class="panierQuantity changeableSelect" type="number" value="0" min="0" max="20" step="1" />
+
+  <!-- * -->
+  <span id="calculTarif">
+    aaa
+  </span>
+  <span>|</span>
+  <span id="calculTarifTotal">
+    bbb
+  </span>
+
+  <!-- ! -->
+  <!-- ! -->
+  <!-- ! -->
   <section>
     <a class="anchor" id="infos"></a>
 
@@ -257,6 +312,7 @@
           <h1>Nous trouver</h1>
         </div>
 
+        
         <div class="col-12 col-sm-6">
           <div class="map-responsive mb-5">
             <iframe
@@ -453,6 +509,7 @@
 
   <!-- Custom ressources -->
   <script src='./assets/js/bbcinema.js'></script>
+  <script type="text/javascript" src='./assets/js/bbcinemapanier.js'></script>
 
 </body>
 
