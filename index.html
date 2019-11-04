@@ -84,40 +84,40 @@
         <div id="affiche" class="my-5 col-12">
           <h1>Les films à l'affiche</h1>
         </div>
-
-        <div class="row">
-          <div class="col-4">
-            <!-- <img class="img-fluid" src="https://via.placeholder.com/600x900" alt=""> -->
-            <img class="img-fluid movieImg" src="https://picsum.photos/600/900?random=1" alt="">
-          </div>
-          <div class="col-4">
-            <img class="img-fluid movieImg" src="https://picsum.photos/600/900?random=2" alt="">
-          </div>
-          <div class="col-4">
-            <img class="img-fluid movieImg" src="https://picsum.photos/600/900?random=3" alt="">
-          </div>
+      </div>
+      <div class="row">
+        <div class="col-4">
+          <!-- <img class="img-fluid" src="https://via.placeholder.com/600x900" alt=""> -->
+          <img class="img-fluid movieImg" src="https://picsum.photos/600/900?random=1" alt="">
         </div>
-
-        <div class="row mb-5">
-          <div class="my-5 col-12">
-            <h1>Description</h1>
-          </div>
-
-          <div class="silverColor">
-            <p>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Magni neque, tempore minima eius officiis
-              magnam!
-            </p>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa nemo dolorum, reprehenderit quia amet magni
-              esse consectetur fuga eos, praesentium nam repudiandae quisquam. Dolorem cum possimus repudiandae
-              molestiae
-              obcaecati tempora accusantium cupiditate voluptates veritatis? Voluptatum cum culpa, reprehenderit eaque
-              velit, reiciendis dolore laudantium blanditiis tenetur harum, nemo quam quos assumenda.
-            </p>
-          </div>
+        <div class="col-4">
+          <img class="img-fluid movieImg" src="https://picsum.photos/600/900?random=2" alt="">
+        </div>
+        <div class="col-4">
+          <img class="img-fluid movieImg" src="https://picsum.photos/600/900?random=3" alt="">
         </div>
       </div>
+
+      <div class="row mb-5">
+        <div class="my-5 col-12">
+          <h1>Description</h1>
+        </div>
+
+        <div class="silverColor">
+          <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Magni neque, tempore minima eius officiis
+            magnam!
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa nemo dolorum, reprehenderit quia amet magni
+            esse consectetur fuga eos, praesentium nam repudiandae quisquam. Dolorem cum possimus repudiandae
+            molestiae
+            obcaecati tempora accusantium cupiditate voluptates veritatis? Voluptatum cum culpa, reprehenderit eaque
+            velit, reiciendis dolore laudantium blanditiis tenetur harum, nemo quam quos assumenda.
+          </p>
+        </div>
+      </div>
+    </div>
     </div>
 
   </section>
@@ -136,7 +136,7 @@
       </div>
 
       <div class="row">
-        <div class="col-6">
+        <div class="offset-1 offset-sm-0 col-10 col-sm-6 pt-5">
           <h3>Avantages <span class="signatureFont">Cinéma BB</span></h3>
           <ol>
             <li>Salles climatisées</li>
@@ -145,7 +145,7 @@
           </ol>
         </div>
 
-        <div class="col-6">
+        <div class="offset-1 offset-sm-0 col-10 col-sm-6 px-0">
           <table class="table table-bordered table-dark">
             <caption>Tableau tarifs</caption>
             <tbody>
@@ -188,7 +188,7 @@
           <h1>Nous trouver</h1>
         </div>
 
-        <div class="col-6">
+        <div class="col-12 col-sm-6">
           <div class="map-responsive mb-5">
 
             <iframe
@@ -198,7 +198,7 @@
 
         </div>
 
-        <div class="offset-1 col-5">
+        <div class="offset-sm-1 col-12 col-sm-5">
           <h4 class="mt-2">Adresse :</h4>
           6A Rue Hans-Selye, J6k4Y8 Châteauguay, QC, Canada
           <h4 class="mt-2">Telephone :</h4>
@@ -284,7 +284,7 @@
               </div>
             </div>
 
-            <div class="offset-4 col-4">
+            <div class="offset-3 offset-sm-4 col-6 col-sm-4 px-0">
               <!-- <input type="submit" class="btn btn-dark " value="Envoyer"> -->
               <button type="button" class="btn btn-dark btn-block">Envoyer</button>
 
@@ -311,14 +311,19 @@
           <h1>Suivez-nous sur les réseaux</h1>
         </div>
 
-        <div class="offset-3 col-3 px-0 pointer">
-          <img src="./assets/img/facebook-square-brands.svg" alt="facebook" height="50px"> L'actu du groupe
+        <div class="offset-1 offset-md-2 col-1 px-0 pointer">
+          <img src="./assets/img/facebook-square-brands.svg" alt="facebook" height="50">
+        </div>
+        <div class="col-4 col-md-3 d-flex align-items-center">
+          L'actu du groupe
         </div>
 
-        <div class="offset-2 col-2 px-0 pointer">
-          <img src="./assets/img/twitter-square-brands.svg" alt="twitter" height="50px"> En court
+        <div class="offset-1 col-1 px-0 pointer">
+          <img src="./assets/img/twitter-square-brands.svg" alt="twitter" height="50">
         </div>
-
+        <div class="col-3 d-flex align-items-center">
+          En court
+        </div>
       </div>
     </div>
 
@@ -378,7 +383,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"></script>
 
 
-  <!-- Custom ressources ---------->
+  <!-- Custom ressources -->
   <script src='./assets/js/bbcinema.js'></script>
 
 </body>
