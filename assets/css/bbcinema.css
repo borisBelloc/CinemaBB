@@ -146,6 +146,7 @@ overflow: hidden;
   /* box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.925); */
   box-shadow: 1px 1px 5px #aaa9ad;
   transition: transform .2s;
+  /* min-height: 465px; */
 }
 
 .movieImg:hover {
