@@ -271,7 +271,6 @@ a:visited {
   cursor: pointer;
 }
 
-/* !! */
 /* Newletter */
 
 .btnSubscribe {
@@ -280,4 +279,18 @@ a:visited {
 
 .sharp {
   border-radius: 0;
+}
+
+/* Btn reservez sceance */
+.goldenBtn {
+  border: 1px solid #F2C992;
+}
+.goldenBtn:hover {
+  color: #F2C992;
+}
+
+/* BTN Modal */
+.shadowBtn {
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.4);
+  /* transition: all 0.3s ease 0s; */
 }
