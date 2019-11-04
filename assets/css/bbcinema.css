@@ -13,6 +13,13 @@
 }
 
 /* -------------- */
+/*
+body       : rgb(0, 0, 0)
+Gold       : #F2C992
+Silver     : #aaa9ad
+Navbar/btn : #343A40
+*/
+/* -------------- */
 
 body {
   background-color: rgb(0, 0, 0);
@@ -293,4 +300,13 @@ a:visited {
 .shadowBtn {
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.4);
   /* transition: all 0.3s ease 0s; */
+}
+
+/* Reservation MODALS */
+.modal-content.reservationModalBody {
+  background-color: #343A40;
+  color: #ffffff;
+}
+.thead-darker {
+  background-color:rgb(33, 36, 39)!important;
 }
