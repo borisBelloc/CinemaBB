@@ -156,17 +156,9 @@
                 <th scope="col">Prix total</th>
               </tr>
             </thead>
-            <tbody>
-              <tr>
-                <th>-tarif</th>
-                <td>-séance</td>
-                <td>-quantité</td>
-                <td>-unitaire</td>
-                <td>-total</td>
-              </tr>
+            <tbody id="panierSelectTarifsGenerated">
             </tbody>
           </table>
-
 
 
 
@@ -183,7 +175,7 @@
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary shadowBtn" data-dismiss="modal">FERMER</button>
           <button type="button" class="btn btn-danger shadowBtn">SUPPRIMER RESERVATION</button>
-          <button type="button" class="btn btn-success shadowBtn">NOUVELLE RESERVATION</button>
+          <button type="button" id="incrementBasket" class="btn btn-success shadowBtn">NOUVELLE RESERVATION</button>
           <button type="button" class="btn btn-primary shadowBtn">ENREGISTRER</button>
         </div>
       </div>
@@ -200,65 +192,40 @@
 
 
   <!-- ! -->
-  <table class="table table-dark">
-    <thead class="thead-darker">
-      <tr>
-        <th scope="col">Tarif</th>
-        <th scope="col">Séance</th>
-        <th scope="col">Quantité</th>
-        <th scope="col">Prix Unitaire</th>
-        <th scope="col">Prix total</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th id="toto">-tarif</th>
-        <td>-séance</td>
-        <td>-quantité</td>
-        <td>-unitaire</td>
-        <td>-total</td>
-      </tr>
-    </tbody>
-  </table>
+
 
   <!-- ! -->
   <!-- ! -->
   <!-- ! -->
-  <!-- * Tarifs -->
-  <select id="panierSelectTarifs" class="changeableSelect">
+  <!-- TARIF STATIC v1 -->
+  <!-- <select id="_panierSelectTarifs" class="changeableSelect">
     <option>choix tarifs</option>
-  </select>
-
-  <!-- * -->
-  <select id="panierSeances" class="changeableSelect">
+  </select> -->
+  <!-- <select id="panierSeances" class="changeableSelect">
     <option>choix séances</option>
-  </select>
-
-  <!-- * -->
-  <input id="quantityPlacePanier" class="panierQuantity changeableSelect" type="number" value="0" min="0" max="20" step="1" />
-
-  <!-- * -->
-  <span id="calculTarif">
+  </select> -->
+  <!-- <input id="quantityPlacePanier" class="panierQuantity changeableSelect" type="number" value="0" min="0" max="20" step="1" /> -->
+  <!-- <span id="_calculTarif">
     Prix unitaire
   </span>
   <span>|</span>
-  <span id="calculTarifTotal">
+  <span id="_calculTarifTotal">
     Prix achat
-  </span>
+  </span> -->
 
-  <br>
-  <span id="countLine">
+  <!-- <br> -->
+  <!-- <span id="countLine">
     Nombre ligne
-  </span>
-
+  </span> -->
+  <!-- 
   <br>
   <span id="panierSelectTarifsGenerated">
-  </span>
+  </span> -->
 
 
-  <br><br>
+  <!-- <br><br> -->
 
-  <button id="incrementBasket" type="button" class="btn btn-danger">++</button>
+  <!-- <button id="incrementBasket" type="button" class="btn btn-danger">++</button> -->
   <!-- onclick="incrementBasket()"  -->
 
   <!-- ! -->
@@ -327,7 +294,7 @@
           <h1>Nous trouver</h1>
         </div>
 
-        
+
         <div class="col-12 col-sm-6">
           <div class="map-responsive mb-5">
             <iframe
