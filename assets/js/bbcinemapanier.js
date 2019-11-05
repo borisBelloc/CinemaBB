@@ -21,48 +21,58 @@ $.each(seances, function (i, p) {
 });
 
 // -------- BASKET
-var countBasket = 0;
+var numberOfLaneBasket = 0;
 
 $('#incrementBasket').click(function () {
-  countBasket += 1;
-  $("#caae").text(countBasket);
+  numberOfLaneBasket += 1;
+  $("#countLine").text(numberOfLaneBasket);
 
-  // $("#oklm").append($('<p class="mb-0">').text("NEW LINE"));
-  $("#_oklm").append($(
-    '<select id="basketNumber' +countBasket+'" class="changeableSelect">',
+
+  var pContainer = document.createElement("p");
+  $("#panierSelectTarifsGenerated").append(pContainer);
+  // $("p").append("Some appended text.");
+  
+
+  // * Generated Tarifs
+  // $("#panierSelectTarifsGenerated").append($('<p class="mb-0">').text("NEW LINE"));
+  $(pContainer).append($(
+    '<select id="tarifNumber' + numberOfLaneBasket + '" class="changeableSelect">',
     '<option>choix tarifs</option>',
     '</select>'
-    ));
-    $.each(tarifs, function (i, p) {
-      $('#basketNumber'+countBasket).append($('<option></option>').val(p).html(p));
-    });
-    $('#_oklm').append("<br/>")
+  ));
+  // * Generated Seances
+  $(pContainer).append($(
+    '<select id="seanceNumber' + numberOfLaneBasket + '" class="changeableSelect">',
+    '<option>choix séances</option>',
+    '</select>'
+  ));
+
+  // * Generated Quantity selector
+  $(pContainer).append($(
+    '<input id="quantityPlacePanier"'+ numberOfLaneBasket +' class="panierQuantity changeableSelect" type="number" value="0" min="0" max="20" step="1" />'
+  ));
 
 
-  // $('.oklm').empty();
-  // $.each(tarifs, function (i, p) {
-  //   $('.oklm').append($(
-
-  //     '<select id="" class="changeableSelect">',
-  //     '<option>choix tarifs</option>',
-  //     '<option></option>',
-  //     '</select>'
-      
-  //     ).val(p).html(p));
-  // });
+  // $('#panierSelectTarifsGenerated').append("<br/>")
 
 
-  /*
-  <select id="panierDeux" class="changeableSelect">
-    <option>choix tarifs</option>
-  </select>
-
-
-  */
+  // * remplissage des SELECTS
+  $.each(tarifs, function (i, p) {
+    $('#tarifNumber' + numberOfLaneBasket).append($('<option></option>').val(p).html(p));
+  });
+  $.each(seances, function (i, p) {
+    $('#seanceNumber' + numberOfLaneBasket).append($('<option></option>').val(p).html(p));
+  });
 
 });
 
+/*
 
+  <select id="panierSeances" class="changeableSelect">
+    <option>choix séances</option>
+  </select>
+
+*/
 
 // Valeur à l'ouverture de page :
 // console.log($("#panierSelectTarifs").prop('selectedIndex'));
