@@ -15,9 +15,18 @@ $.each(seances, function (i, p) {
 var numberOfLaneBasket = 0;
 generateSelect();
 
+// * BTN NOUVELLE RESA
 $('#incrementBasket').click(function () {
   numberOfLaneBasket += 1;
   $("#countLine").text(numberOfLaneBasket);
+  generateSelect();
+});
+// * BTN DELETE ALL RESA
+$('#deleteBasket').click(function () {
+  for (i=0; i<= numberOfLaneBasket; i++ ) {
+    $("#trId"+i).remove();
+  }
+  numberOfLaneBasket = 0;
   generateSelect();
 });
 
@@ -25,8 +34,13 @@ $('#incrementBasket').click(function () {
 
 function generateSelect() {
   var trContainer = document.createElement("tr");
+  // * ADD ID TO THE <tr>
+  $(trContainer).attr('id', 'trId'+numberOfLaneBasket);
+
+
+
+
   $("#panierSelectTarifsGenerated").append(trContainer);
-  // $("p").append("Some appended text.");
 
   // * Generated Tarifs
   // $("#panierSelectTarifsGenerated").append($('<p class="mb-0">').text("NEW LINE"));
@@ -133,12 +147,7 @@ $(document).on('change', '.changeableSelect', function () {
   $("#calculTarif" + lastCharIsId).text(priceList[indexFirstGen][indexSecondGen] + " €");
   // $("#calculTarifTotal" + lastCharIsId).text("Prix total : " + (priceList[indexFirstGen][indexSecondGen] * (quantityGen ? quantityGen : 1)));
 
-  // if ($(this).attr('id') == myElemId) {
-  //   console.log("icite");
-  // }
-
   console.log('iii ' + $("#quantityPlacePanier"+lastCharIsId).attr('id'));
-  
 
   // est-on sur un Quantity ?
   // TODO: if else inutile ? le else marche partout ?
