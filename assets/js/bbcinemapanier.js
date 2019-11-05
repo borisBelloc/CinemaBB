@@ -14,6 +14,7 @@ $.each(seances, function (i, p) {
 // -------- BASKET
 var numberOfLaneBasket = 0;
 var calculAchatTotal = 0;
+var priceToAdd;
 generateSelect();
 
 // * BTN NOUVELLE RESA
@@ -24,10 +25,11 @@ $('#incrementBasket').click(function () {
 });
 // * BTN DELETE ALL RESA
 $('#deleteBasket').click(function () {
-  for (i = 0; i <= numberOfLaneBasket; i++) {
+  for (let i = 0; i <= numberOfLaneBasket; i++) {
     $("#trId" + i).remove();
   }
   numberOfLaneBasket = 0;
+  $("#achatTotal").text(0)
   generateSelect();
 });
 
@@ -109,24 +111,24 @@ $(document).on('change', '.changeableSelect', function () {
   // TODO: Fusionner ces 4 lignes en 2 ?
   // * regarde qui a lancé le "onChange"
   var myElemId = $(this).attr('id');
-  console.log("myElemId >-> " + myElemId);
+  // console.log("myElemId >-> " + myElemId);
   // * value de celui qui vient de lancer le "onChange"
   var valueSelected = $("#" + myElemId).val();
-  console.log("valueSelected-- " + valueSelected);
+  // console.log("valueSelected-- " + valueSelected);
 
   // * Recupere le int de l'id ...
   var lastCharIsId = myElemId.substr(myElemId.length - 1);
-  console.log("lastCharIsId -> " + lastCharIsId);
+  // console.log("lastCharIsId -> " + lastCharIsId);
 
   // * Recupere id du Quantity
   var myQuantityId = $("#quantityPlacePanier" + numberOfLaneBasket).attr('id');
-  console.log("quantity ID : " + myQuantityId);
+  // console.log("quantity ID : " + myQuantityId);
 
   // * Calcul for generated
   $("#calculTarif" + lastCharIsId).text(priceList[indexFirstGen][indexSecondGen] + " €");
   // $("#calculTarifTotal" + lastCharIsId).text("Prix total : " + (priceList[indexFirstGen][indexSecondGen] * (quantityGen ? quantityGen : 1)));
 
-  console.log('iii ' + $("#quantityPlacePanier" + lastCharIsId).attr('id'));
+  // console.log('iii ' + $("#quantityPlacePanier" + lastCharIsId).attr('id'));
 
   // est-on sur un Quantity ?
   // TODO: if else inutile ? la ligne du else marche partout ?
@@ -137,22 +139,16 @@ $(document).on('change', '.changeableSelect', function () {
     console.log("Non, on a pas touché la quantity");
     $("#calculTarifTotal" + lastCharIsId).text((priceList[indexFirstGen][indexSecondGen] * $("#quantityPlacePanier" + numberOfLaneBasket).val()) + " €");
   }
-
-  // ! Renvoie la value de l'element html
-  var str = $( "#calculTarifTotal0" ).first().text();
-  console.log("ggggg " + str);
-  
-
-  for (i = 0; i <= numberOfLaneBasket; i++) {
-    // console.log("TTT - " + $("#calculTarifTotal"+0));
-    // $('#mytable #calculTarifTotal').each(function () {
-    //   console.log($(this).html());
-    // });
-
-    // lire : https://stackoverflow.com/questions/376081/how-to-get-a-table-cell-value-using-jquery
-
-
-    // calculAchatTotal += $("#calculTarifTotal"+i).val();
+  calculAchatTotal = 0;
+  for (let i = 0; i <= numberOfLaneBasket; i++) {
+    // calculAchatTotal = 0;
+    priceToAdd = parseInt($( "#calculTarifTotal"+i ).text()); // parseInt -> s'arrette au premier non int, contrairement a Number() qui renverrait NaN
+    // console.log("+priceToAdd " + typeof calculAchatTotal);
+    console.log("priceToAdd " + priceToAdd);
+    
+    calculAchatTotal += priceToAdd;
+    console.log("calculAchatTotal " + calculAchatTotal);
+    // console.log("priceToAdd++ " +typeof calculAchatTotal);
   }
   $("#achatTotal").text(calculAchatTotal)
 });
