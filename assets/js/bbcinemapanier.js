@@ -49,7 +49,7 @@ $('#incrementBasket').click(function () {
 
   // * Generated Quantity selector
   $(pContainer).append($(
-    '<input id="quantityPlacePanier"' + numberOfLaneBasket + ' class="panierQuantity changeableSelect" type="number" value="0" min="0" max="20" step="1" />'
+    '<input id="quantityPlacePanier' + numberOfLaneBasket + '" class="panierQuantity changeableSelect" type="number" value="0" min="0" max="20" step="1" />'
   ));
 
   // * Generated Span Prix unitaire
@@ -85,7 +85,6 @@ $('#incrementBasket').click(function () {
 
 // Valeur à l'ouverture de page :
 // console.log($("#panierSelectTarifs").prop('selectedIndex'));
-
 // console.log($('#panierSelectTarifs').val());
 
 // * surveille seulement 1 id
@@ -106,13 +105,16 @@ $(document).on('change', '.changeableSelect', function () {
   // console.log("indexFirst > " + indexFirst);
   var indexSecond = $("#panierSeances").prop('selectedIndex');
   // console.log("indexSecond > " + indexSecond);
-  varQuantity = $("#quantityPlacePanier").val();
+  var quantity = $("#quantityPlacePanier").val();
 
 // * Calcul generated lane
 var indexFirstGen = $("#tarifNumber" + numberOfLaneBasket).prop('selectedIndex');
 console.log("indexFirstGen -- " + indexFirstGen);
 var indexSecondGen = $("#seanceNumber" + numberOfLaneBasket).prop('selectedIndex');
 console.log("indexFirstGen -- " + indexSecondGen);
+var quantityGen = $("#quantityPlacePanier" + numberOfLaneBasket).val();
+console.log("quantityGen-- " + quantityGen);
+
 
 
   var priceList = [
@@ -120,9 +122,10 @@ console.log("indexFirstGen -- " + indexSecondGen);
     [5, 6, 6]
   ]
   $("#calculTarif").text("Prix unitaire : " + priceList[indexFirst][indexSecond]);
-  $("#calculTarifTotal").text("Prix total : " + (priceList[indexFirst][indexSecond] * varQuantity));
-
+  $("#calculTarifTotal").text("Prix total : " + (priceList[indexFirst][indexSecond] * quantity));
+  
   // * Calcul for generated
   $("#calculTarif"+numberOfLaneBasket).text("Prix unitaire : " + priceList[indexFirstGen][indexSecondGen]);
+  $("#calculTarifTotal"+numberOfLaneBasket).text("Prix total : " + (priceList[indexFirstGen][indexSecondGen] * quantityGen));
   
 });
