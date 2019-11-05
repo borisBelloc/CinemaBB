@@ -1,13 +1,4 @@
-// var options = ["1", "2", "3", "4", "5"];
-// $('#select').empty();
-// $.each(options, function(i, p) {
-//     $('#select').append($('<option></option>').val(p).html(p));
-// });
-
-
-
 // -------- Creation SELECT
-// !
 var tarifs = ["Plein tarif", "- 14 ans"];
 $('#panierSelectTarifs').empty();
 $.each(tarifs, function (i, p) {
@@ -109,12 +100,12 @@ $(document).on('change', '.changeableSelect', function () {
 
 // * Calcul generated lane
 var indexFirstGen = $("#tarifNumber" + numberOfLaneBasket).prop('selectedIndex');
-console.log("indexFirstGen -- " + indexFirstGen);
+// console.log("indexFirstGen -- " + indexFirstGen);
 var indexSecondGen = $("#seanceNumber" + numberOfLaneBasket).prop('selectedIndex');
-console.log("indexFirstGen -- " + indexSecondGen);
-var quantityGen = $("#quantityPlacePanier" + numberOfLaneBasket).val();
-console.log("quantityGen-- " + quantityGen);
-
+// console.log("indexFirstGen -- " + indexSecondGen);
+// *Stash
+// var quantityGen = $("#quantityPlacePanier" + numberOfLaneBasket).val();
+// console.log("quantityGen-- " + quantityGen);
 
 
   var priceList = [
@@ -124,8 +115,25 @@ console.log("quantityGen-- " + quantityGen);
   $("#calculTarif").text("Prix unitaire : " + priceList[indexFirst][indexSecond]);
   $("#calculTarifTotal").text("Prix total : " + (priceList[indexFirst][indexSecond] * quantity));
   
-  // * Calcul for generated
-  $("#calculTarif"+numberOfLaneBasket).text("Prix unitaire : " + priceList[indexFirstGen][indexSecondGen]);
-  $("#calculTarifTotal"+numberOfLaneBasket).text("Prix total : " + (priceList[indexFirstGen][indexSecondGen] * quantityGen));
+  // * my ID (recuperation id)
+  var myElemId = $(this).attr('id');
+  console.log("myElemId >-> " + myElemId);
+  // TODO: Fusionner ces 4 lignes en 2 ?
+  var quantityGen = $("#" + myElemId).val();
+  console.log("quantityGen-- " + quantityGen);
   
+  // * Recupere l'int de l'id ...
+  var lastCharIsId = myElemId.substr(myElemId.length - 1);
+  console.log("lastCharIsId -> " + lastCharIsId);
+  
+  
+  // * Calcul for generated
+  $("#calculTarif"+lastCharIsId).text("Prix unitaire : " + priceList[indexFirstGen][indexSecondGen]);
+  $("#calculTarifTotal"+lastCharIsId).text("Prix total : " + (priceList[indexFirstGen][indexSecondGen] * quantityGen));
+ 
+  // * Affiche tout les id des panierQuantity
+  // $( ".panierQuantity" ).each(function() {
+  //   console.log("aaa >-> " + $( this ).attr('id'));
+  // });
+
 });
