@@ -100,7 +100,7 @@ $(document).on('change', '.changeableSelect', function () {
   var indexSecondGen = $("#seanceNumber" + numberOfLaneBasket).prop('selectedIndex');
   // console.log("indexSecondGen -- " + indexSecondGen);
 
-  // Tableau de prix
+  // Tableaux de prix
   var priceList = [
     [10, 12, 12.50],
     [5, 6, 6]
@@ -133,10 +133,10 @@ $(document).on('change', '.changeableSelect', function () {
   // est-on sur un Quantity ?
   // TODO: if else inutile ? la ligne du else marche partout ?
   if (myElemId == $("#quantityPlacePanier" + lastCharIsId).attr('id')) {
-    console.log("Oui, on a touché la quantity");
+    // console.log("Oui, on a touché la quantity");
     $("#calculTarifTotal" + lastCharIsId).text((priceList[indexFirstGen][indexSecondGen] * valueSelected) + " €");
   } else {
-    console.log("Non, on a pas touché la quantity");
+    // console.log("Non, on a pas touché la quantity");
     $("#calculTarifTotal" + lastCharIsId).text((priceList[indexFirstGen][indexSecondGen] * $("#quantityPlacePanier" + numberOfLaneBasket).val()) + " €");
   }
   calculAchatTotal = 0;
@@ -144,10 +144,10 @@ $(document).on('change', '.changeableSelect', function () {
     // calculAchatTotal = 0;
     priceToAdd = parseInt($( "#calculTarifTotal"+i ).text()); // parseInt -> s'arrette au premier non int, contrairement a Number() qui renverrait NaN
     // console.log("+priceToAdd " + typeof calculAchatTotal);
-    console.log("priceToAdd " + priceToAdd);
+    // console.log("priceToAdd " + priceToAdd);
     
     calculAchatTotal += priceToAdd;
-    console.log("calculAchatTotal " + calculAchatTotal);
+    // console.log("calculAchatTotal " + calculAchatTotal);
     // console.log("priceToAdd++ " +typeof calculAchatTotal);
   }
   $("#achatTotal").text(calculAchatTotal)
