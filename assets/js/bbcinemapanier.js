@@ -31,7 +31,7 @@ $('#incrementBasket').click(function () {
   var pContainer = document.createElement("p");
   $("#panierSelectTarifsGenerated").append(pContainer);
   // $("p").append("Some appended text.");
-  
+
 
   // * Generated Tarifs
   // $("#panierSelectTarifsGenerated").append($('<p class="mb-0">').text("NEW LINE"));
@@ -49,8 +49,24 @@ $('#incrementBasket').click(function () {
 
   // * Generated Quantity selector
   $(pContainer).append($(
-    '<input id="quantityPlacePanier"'+ numberOfLaneBasket +' class="panierQuantity changeableSelect" type="number" value="0" min="0" max="20" step="1" />'
+    '<input id="quantityPlacePanier"' + numberOfLaneBasket + ' class="panierQuantity changeableSelect" type="number" value="0" min="0" max="20" step="1" />'
   ));
+
+  // * Generated Span Prix unitaire
+  $(pContainer).append($(
+    '<span id="calculTarif'+ numberOfLaneBasket +'">',
+    '</span>'
+  ));
+  // * Generated Span Prix achat
+  $(pContainer).append($(
+    '<span id="calculTarifTotal'+ numberOfLaneBasket +'">',
+    '</span>'
+  ));
+
+  // * remplissage des SPAN Prix unitaire
+  $("#calculTarif"+numberOfLaneBasket).text(" Prix unitaire");
+  // * remplissage des SPAN Prix achat
+  $("#calculTarifTotal"+numberOfLaneBasket).text(" Prix achat");
 
 
   // $('#panierSelectTarifsGenerated').append("<br/>")
@@ -66,13 +82,6 @@ $('#incrementBasket').click(function () {
 
 });
 
-/*
-
-  <select id="panierSeances" class="changeableSelect">
-    <option>choix séances</option>
-  </select>
-
-*/
 
 // Valeur à l'ouverture de page :
 // console.log($("#panierSelectTarifs").prop('selectedIndex'));
@@ -89,21 +98,22 @@ $(document).on('change', '.changeableSelect', function () {
   // console.log($("#panierSelectTarifs").val());
   // console.log($("#panierSelectTarifs").index());
 
-  var tarifName = $("#panierSelectTarifs").val();
-  console.log("tarifName val() " + tarifName);
 
-  // var listItem = $("#panierSelectTarifs");
-  // console.log( "Index: " + $( "option" ).index( listItem ) );
+  // * Calcul static : lane 0
+  // var tarifName = $("#panierSelectTarifs").val();
+  // console.log("tarifName val() " + tarifName);
   var indexFirst = $("#panierSelectTarifs").prop('selectedIndex');
-  console.log("indexFirst > " + indexFirst);
+  // console.log("indexFirst > " + indexFirst);
   var indexSecond = $("#panierSeances").prop('selectedIndex');
-  console.log("indexSecond > " + indexSecond);
-
+  // console.log("indexSecond > " + indexSecond);
   varQuantity = $("#quantityPlacePanier").val();
-  console.log(varQuantity);
 
-  // var index = $( "#panierSelectTarifs" ).index( this );
-  // $( "#calculTarif" ).text( "That was div index #" + index );
+// * Calcul generated lane
+var indexFirstGen = $("#tarifNumber" + numberOfLaneBasket).prop('selectedIndex');
+console.log("indexFirstGen -- " + indexFirstGen);
+var indexSecondGen = $("#seanceNumber" + numberOfLaneBasket).prop('selectedIndex');
+console.log("indexFirstGen -- " + indexSecondGen);
+
 
   var priceList = [
     [10, 12, 12.50],
@@ -112,4 +122,7 @@ $(document).on('change', '.changeableSelect', function () {
   $("#calculTarif").text("Prix unitaire : " + priceList[indexFirst][indexSecond]);
   $("#calculTarifTotal").text("Prix total : " + (priceList[indexFirst][indexSecond] * varQuantity));
 
+  // * Calcul for generated
+  $("#calculTarif"+numberOfLaneBasket).text("Prix unitaire : " + priceList[indexFirstGen][indexSecondGen]);
+  
 });
