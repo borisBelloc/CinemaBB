@@ -130,13 +130,13 @@
 
   <!-- * Reservation MODALS -->
   <!-- Large modal -->
-  <div id="modalReservations" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+  <div id="modalReservations" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modalReservations"
     aria-hidden="true">
     <div class="modal-dialog modal-lg">
 
       <div class="modal-content reservationModalBody">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">Réservez votre séance</h5>
+          <h5 class="modal-title">Réservez votre séance</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -146,76 +146,49 @@
 
 
         <div class="modal-body">
-          <table class="table table-dark">
-            <thead class="thead-darker">
-              <tr>
-                <th scope="col">Tarif</th>
-                <th scope="col">Séance</th>
-                <th scope="col">Quantité</th>
-                <th scope="col">Prix Unitaire</th>
-                <th scope="col">Prix total</th>
-              </tr>
-            </thead>
-            <tbody id="panierSelectTarifsGenerated">
-            </tbody>
-          </table>
+          <div class="table-responsive">
 
+            <table class="table table-dark">
+              <thead class="thead-darker">
+                <tr>
+                  <th scope="col">Tarif</th>
+                  <th scope="col">Séance</th>
+                  <th scope="col">Quantité</th>
+                  <th scope="col">Prix Unitaire</th>
+                  <th scope="col">Prix total</th>
+                </tr>
+              </thead>
+              <tbody id="panierSelectTarifsGenerated">
+              </tbody>
+            </table>
+
+          </div>
         </div>
 
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary shadowBtn" data-dismiss="modal">FERMER</button>
-          <button type="button" id="deleteBasket" class="btn btn-danger shadowBtn">SUPPRIMER RESERVATION</button>
-          <button type="button" id="incrementBasket" class="btn btn-success shadowBtn">NOUVELLE RESERVATION</button>
-          <button type="button" class="btn btn-primary shadowBtn">ENREGISTRER</button>
+          <div class="container-fluid">
+            <div class="row no-gutters justify-content-center">
+              <div class="col-5 col-sm-3 order-4 order-md-1  m-1 m-md-0">
+                <button type="button" class="px-0 btn btn-secondary shadowBtn btn-block sharpBtn" data-dismiss="modal">FERMER</button>
+              </div>
+              <div class="col-5 col-sm-3 order-3 order-md-2 m-1 m-md-0">
+                <button type="button" id="deleteBasket" class="px-0 btn btn-danger shadowBtn btn-block sharpBtn">SUPPRIMER RESERVATION</button>
+              </div>
+              <div class="col-5 col-sm-3 order-1 order-md-3 m-1 m-md-0">
+                <button type="button" id="incrementBasket" class="px-0 btn btn-success shadowBtn btn-block sharpBtn">NOUVELLE
+                  RESERVATION</button>
+              </div>
+              <div class="col-5 col-sm-3 order-2 order-md-4 m-1 m-md-0">
+                <button type="button" class="px-0 btn btn-primary shadowBtn btn-block sharpBtn">ENREGISTRER</button>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
 
     </div>
   </div>
-
-
-
-
-
-
-  
-  
-  <!-- ! -->
-  <!-- TARIF STATIC v1 -->
-  <!-- <select id="_panierSelectTarifs" class="changeableSelect">
-    <option>choix tarifs</option>
-  </select> -->
-  <!-- <select id="panierSeances" class="changeableSelect">
-    <option>choix séances</option>
-  </select> -->
-  <!-- <input id="quantityPlacePanier" class="panierQuantity changeableSelect" type="number" value="0" min="0" max="20" step="1" /> -->
-  <!-- <span id="_calculTarif">
-    Prix unitaire
-  </span>
-  <span>|</span>
-  <span id="_calculTarifTotal">
-    Prix achat
-  </span> -->
-
-  <!-- <br> -->
-  <!-- <span id="countLine">
-    Nombre ligne
-  </span> -->
-  <!-- 
-  <br>
-  <span id="panierSelectTarifsGenerated">
-  </span> -->
-
-  <!-- <br><br> -->
-
-  <!-- <button id="incrementBasket" type="button" class="btn btn-danger">++</button> -->
-  <!-- onclick="incrementBasket()"  -->
-  <!-- ! -->
-
-
-
-
-
 
   <!-- Section 3 : Infos-->
   <section>

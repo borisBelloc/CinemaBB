@@ -31,19 +31,15 @@ $('#deleteBasket').click(function () {
 });
 
 
-
 function generateSelect() {
   var trContainer = document.createElement("tr");
-  // * ADD ID TO THE <tr>
+  // * add an id to the <tr>
   $(trContainer).attr('id', 'trId'+numberOfLaneBasket);
-
-
 
 
   $("#panierSelectTarifsGenerated").append(trContainer);
 
   // * Generated Tarifs
-  // $("#panierSelectTarifsGenerated").append($('<p class="mb-0">').text("NEW LINE"));
   $(trContainer).append($(
     '<td><select id="tarifNumber' + numberOfLaneBasket + '" class="changeableSelect form-control form-control-sm">',
     '<option>choix tarifs</option>',
@@ -73,10 +69,8 @@ function generateSelect() {
   ));
 
   // * remplissage des SPAN Prix unitaire
-  // $("#calculTarif" + numberOfLaneBasket).text(" Prix unitaire");
   $("#calculTarif" + numberOfLaneBasket).text("");
   // * remplissage des SPAN Prix achat
-  // $("#calculTarifTotal" + numberOfLaneBasket).text(" Prix achat");
   $("#calculTarifTotal" + numberOfLaneBasket).text("");
 
   // $('#panierSelectTarifsGenerated').append("<br/>")
@@ -91,57 +85,41 @@ function generateSelect() {
   
 }
 
-
-// Valeur à l'ouverture de page :
-// console.log($("#panierSelectTarifs").prop('selectedIndex'));
-// console.log($('#panierSelectTarifs').val());
-
 // * surveille seulement 1 id
 // $("#panierSelectTarifs").change(function() {
 
 // * surveille tous les 'changeableSelect'
 $(document).on('change', '.changeableSelect', function () {
 
-  // * calcul static
-  // var indexFirst = $("#panierSelectTarifs").prop('selectedIndex');
-  // console.log("indexFirst > " + indexFirst);
-  // var indexSecond = $("#panierSeances").prop('selectedIndex');
-  // console.log("indexSecond > " + indexSecond);
-  // var quantity = $("#quantityPlacePanier").val();
-
   // * Calcul generated lane
   var indexFirstGen = $("#tarifNumber" + numberOfLaneBasket).prop('selectedIndex');
-  console.log("indexFirstGen -- " + indexFirstGen);
+  // console.log("indexFirstGen -- " + indexFirstGen);
   var indexSecondGen = $("#seanceNumber" + numberOfLaneBasket).prop('selectedIndex');
-  console.log("indexSecondGen -- " + indexSecondGen);
+  // console.log("indexSecondGen -- " + indexSecondGen);
 
+  // Tableau de prix
   var priceList = [
     [10, 12, 12.50],
     [5, 6, 6]
   ]
-  // Calcul static
-  // $("#calculTarif").text("Prix unitaire : " + priceList[indexFirst][indexSecond]);
-  // $("#calculTarifTotal").text("Prix total : " + (priceList[indexFirst][indexSecond] * quantity));
 
 
   // * my ID (recuperation id)
   // TODO: Fusionner ces 4 lignes en 2 ?
+  // * regarde qui a lancé le "onChange"
   var myElemId = $(this).attr('id');
   console.log("myElemId >-> " + myElemId);
+  // * value de celui qui vient de lancer le "onChange"
   var valueSelected = $("#" + myElemId).val();
   console.log("valueSelected-- " + valueSelected);
 
-  // * Recupere l'int de l'id ...
+  // * Recupere le int de l'id ...
   var lastCharIsId = myElemId.substr(myElemId.length - 1);
   console.log("lastCharIsId -> " + lastCharIsId);
 
-  console.log("******* " + valueSelected);
-  
   // * Recupere id du Quantity
   var myQuantityId = $("#quantityPlacePanier"+numberOfLaneBasket).attr('id');
   console.log("quantity ID : " + myQuantityId);
-  // console.log("value Quantity clicked : " + $("#"+myQuantityId).val());
-  
 
   // * Calcul for generated
   $("#calculTarif" + lastCharIsId).text(priceList[indexFirstGen][indexSecondGen] + " €");
@@ -150,12 +128,12 @@ $(document).on('change', '.changeableSelect', function () {
   console.log('iii ' + $("#quantityPlacePanier"+lastCharIsId).attr('id'));
 
   // est-on sur un Quantity ?
-  // TODO: if else inutile ? le else marche partout ?
+  // TODO: if else inutile ? la ligne du else marche partout ?
   if (myElemId == $("#quantityPlacePanier"+lastCharIsId).attr('id')) {
-    console.log("oui");
+    console.log("Oui, on a touché la quantity");
     $("#calculTarifTotal" + lastCharIsId).text((priceList[indexFirstGen][indexSecondGen] * valueSelected) + " €");
   } else {
-    console.log("non");
+    console.log("Non, on a pas touché la quantity");
     $("#calculTarifTotal" + lastCharIsId).text((priceList[indexFirstGen][indexSecondGen] * $("#quantityPlacePanier"+numberOfLaneBasket).val()) + " €");
   }
 });
