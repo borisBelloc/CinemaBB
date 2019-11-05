@@ -13,6 +13,7 @@ $.each(seances, function (i, p) {
 
 // -------- BASKET
 var numberOfLaneBasket = 0;
+var calculAchatTotal = 0;
 generateSelect();
 
 // * BTN NOUVELLE RESA
@@ -23,8 +24,8 @@ $('#incrementBasket').click(function () {
 });
 // * BTN DELETE ALL RESA
 $('#deleteBasket').click(function () {
-  for (i=0; i<= numberOfLaneBasket; i++ ) {
-    $("#trId"+i).remove();
+  for (i = 0; i <= numberOfLaneBasket; i++) {
+    $("#trId" + i).remove();
   }
   numberOfLaneBasket = 0;
   generateSelect();
@@ -34,7 +35,7 @@ $('#deleteBasket').click(function () {
 function generateSelect() {
   var trContainer = document.createElement("tr");
   // * add an id to the <tr>
-  $(trContainer).attr('id', 'trId'+numberOfLaneBasket);
+  $(trContainer).attr('id', 'trId' + numberOfLaneBasket);
 
 
   $("#panierSelectTarifsGenerated").append(trContainer);
@@ -82,7 +83,7 @@ function generateSelect() {
   $.each(seances, function (i, p) {
     $('#seanceNumber' + numberOfLaneBasket).append($('<option></option>').val(p).html(p));
   });
-  
+
 }
 
 // * surveille seulement 1 id
@@ -118,22 +119,40 @@ $(document).on('change', '.changeableSelect', function () {
   console.log("lastCharIsId -> " + lastCharIsId);
 
   // * Recupere id du Quantity
-  var myQuantityId = $("#quantityPlacePanier"+numberOfLaneBasket).attr('id');
+  var myQuantityId = $("#quantityPlacePanier" + numberOfLaneBasket).attr('id');
   console.log("quantity ID : " + myQuantityId);
 
   // * Calcul for generated
   $("#calculTarif" + lastCharIsId).text(priceList[indexFirstGen][indexSecondGen] + " €");
   // $("#calculTarifTotal" + lastCharIsId).text("Prix total : " + (priceList[indexFirstGen][indexSecondGen] * (quantityGen ? quantityGen : 1)));
 
-  console.log('iii ' + $("#quantityPlacePanier"+lastCharIsId).attr('id'));
+  console.log('iii ' + $("#quantityPlacePanier" + lastCharIsId).attr('id'));
 
   // est-on sur un Quantity ?
   // TODO: if else inutile ? la ligne du else marche partout ?
-  if (myElemId == $("#quantityPlacePanier"+lastCharIsId).attr('id')) {
+  if (myElemId == $("#quantityPlacePanier" + lastCharIsId).attr('id')) {
     console.log("Oui, on a touché la quantity");
     $("#calculTarifTotal" + lastCharIsId).text((priceList[indexFirstGen][indexSecondGen] * valueSelected) + " €");
   } else {
     console.log("Non, on a pas touché la quantity");
-    $("#calculTarifTotal" + lastCharIsId).text((priceList[indexFirstGen][indexSecondGen] * $("#quantityPlacePanier"+numberOfLaneBasket).val()) + " €");
+    $("#calculTarifTotal" + lastCharIsId).text((priceList[indexFirstGen][indexSecondGen] * $("#quantityPlacePanier" + numberOfLaneBasket).val()) + " €");
   }
+
+  // ! Renvoie la value de l'element html
+  var str = $( "#calculTarifTotal0" ).first().text();
+  console.log("ggggg " + str);
+  
+
+  for (i = 0; i <= numberOfLaneBasket; i++) {
+    // console.log("TTT - " + $("#calculTarifTotal"+0));
+    // $('#mytable #calculTarifTotal').each(function () {
+    //   console.log($(this).html());
+    // });
+
+    // lire : https://stackoverflow.com/questions/376081/how-to-get-a-table-cell-value-using-jquery
+
+
+    // calculAchatTotal += $("#calculTarifTotal"+i).val();
+  }
+  $("#achatTotal").text(calculAchatTotal)
 });
