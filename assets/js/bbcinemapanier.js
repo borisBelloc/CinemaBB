@@ -37,6 +37,8 @@ $('#deleteBasket').click(function () {
 // * BTN SAVE ALL RESA
 $('#saveBasket').click(function () {
   saveBasket();
+  console.log("saved");
+  
 });
 
 function generateSelect() {
@@ -164,10 +166,8 @@ function saveBasket() {
 
   let rows = document.querySelectorAll("#tableResa tr");
   let data = [];
-  console.log( document.querySelector("#tarifNumber0").value);
-  console.log( document.querySelector("#calculTarif0").textContent);
-  
-  for (i = 0; i < rows.length-1; i++) {
+
+  for (i = 0; i < rows.length - 1; i++) {
     let tarif = document.querySelector("#tarifNumber" + i).value;
     let seance = document.querySelector("#seanceNumber" + i).value;
     let quantite = document.querySelector("#quantityPlacePanier" + i).value;
@@ -180,13 +180,41 @@ function saveBasket() {
       "prixUnitaire": prixUnitaire,
       "prixTotal": prixTotal
     };
-    data.push(JSON.stringify(info));
+    data.push((info));
   }
-  localStorage.setItem("reservations", data);
+  localStorage.setItem("reservations", JSON.stringify(data));
 }
 
 function getCart() {
+  // Print the json
   let info = localStorage.getItem("reservations");
-
   console.log(info);
+  // console.log("i" + info.length);
+
+
+  // TODO: séparer les objets contenus dans DATA afin de les afficher 1 par row
+  // ci dessous pas fini; pas reussis a séparer les objects lorsqu'on a plusieurs reservations
+
+  // * Transform localStorage back to an Object
+  // TODO: crash because there is 2 objects...
+  let mySave = JSON.parse(window.localStorage.getItem('reservations'));
+
+  // * enumerate the properties of a JavaScript object
+  // var propertyName;
+  // for (propertyName in mySave) {
+  //   console.log("propertyName " + propertyName);
+  //   console.log(mySave[propertyName]);
+  // }
+
+  // var output = '';
+  // for (var key in info) {
+  //   if (info.hasOwnProperty(key)) {
+  //     output = output + (key +  + info[key]) + ':<br>';
+  //   }
+  // }
+
+  // console.log("restult -> " + output);
+
+  // $('#divtoshowarray').html(output);
+
 }
