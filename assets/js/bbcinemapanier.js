@@ -34,6 +34,11 @@ $('#deleteBasket').click(function () {
 });
 
 
+// * BTN SAVE ALL RESA
+$('#saveBasket').click(function () {
+  saveBasket();
+});
+
 function generateSelect() {
   var trContainer = document.createElement("tr");
   // * add an id to the <tr>
@@ -142,13 +147,46 @@ $(document).on('change', '.changeableSelect', function () {
   calculAchatTotal = 0;
   for (let i = 0; i <= numberOfLaneBasket; i++) {
     // calculAchatTotal = 0;
-    priceToAdd = parseInt($( "#calculTarifTotal"+i ).text()); // parseInt -> s'arrette au premier non int, contrairement a Number() qui renverrait NaN
+    priceToAdd = parseInt($("#calculTarifTotal" + i).text()); // parseInt -> s'arrette au premier non int, contrairement a Number() qui renverrait NaN
     // console.log("+priceToAdd " + typeof calculAchatTotal);
     // console.log("priceToAdd " + priceToAdd);
-    
+
     calculAchatTotal += priceToAdd;
     // console.log("calculAchatTotal " + calculAchatTotal);
     // console.log("priceToAdd++ " +typeof calculAchatTotal);
   }
   $("#achatTotal").text(calculAchatTotal)
 });
+
+// SAVE
+
+function saveBasket() {
+
+  let rows = document.querySelectorAll("#tableResa tr");
+  let data = [];
+  console.log( document.querySelector("#tarifNumber0").value);
+  console.log( document.querySelector("#calculTarif0").textContent);
+  
+  for (i = 0; i < rows.length-1; i++) {
+    let tarif = document.querySelector("#tarifNumber" + i).value;
+    let seance = document.querySelector("#seanceNumber" + i).value;
+    let quantite = document.querySelector("#quantityPlacePanier" + i).value;
+    let prixUnitaire = document.querySelector("#calculTarif" + i).textContent;
+    let prixTotal = document.querySelector("#calculTarifTotal" + i).textContent;
+    let info = {
+      "tarif": tarif,
+      "seance": seance,
+      "quantite": quantite,
+      "prixUnitaire": prixUnitaire,
+      "prixTotal": prixTotal
+    };
+    data.push(JSON.stringify(info));
+  }
+  localStorage.setItem("reservations", data);
+}
+
+function getCart() {
+  let info = localStorage.getItem("reservations");
+
+  console.log(info);
+}
