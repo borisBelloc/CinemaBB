@@ -13,4 +13,4 @@ Technos used :
 * CSS 3
 
 
-``` BELLOC Boris ``` <sup>2019/11/24</sup>
+``` � BELLOC Boris ``` <sup>2019/11/24</sup>
