@@ -12,16 +12,22 @@ $.each(seances, function (i, p) {
 });
 
 // -------- BASKET
-var numberOfLaneBasket = 0;
+var numberOfLaneBasket = 1;
 var calculAchatTotal = 0;
 var priceToAdd;
-generateSelect();
+
+/**
+ * generate x selects for numberOfLaneBasket
+ */
+for (let i = 1; i <= numberOfLaneBasket ; i++ ) {
+  generateEmptySelect();
+}
 
 // * BTN NOUVELLE RESA
 $('#incrementBasket').click(function () {
   numberOfLaneBasket += 1;
   $("#countLine").text(numberOfLaneBasket);
-  generateSelect();
+  generateEmptySelect();
 });
 // * BTN DELETE ALL RESA
 $('#deleteBasket').click(function () {
@@ -31,26 +37,25 @@ $('#deleteBasket').click(function () {
   }
   numberOfLaneBasket = 0;
   $("#achatTotal").text(0)
-  generateSelect();
+  generateEmptySelect();
 });
-
-// function deleteCart(){
-//   window.localStorage.clear();
-// }
-
 
 // * BTN SAVE ALL RESA
 $('#saveBasket').click(function () {
   saveBasket();
   console.log("saved");
-  
 });
 
-function generateSelect() {
+/**
+ * Generate Empty Select -> window.localStorage.length == 0
+ */
+function generateEmptySelect() {
   var trContainer = document.createElement("tr");
+
+
+
   // * add an id to the <tr>
   $(trContainer).attr('id', 'trId' + numberOfLaneBasket);
-
 
   $("#panierSelectTarifsGenerated").append(trContainer);
 
@@ -133,7 +138,7 @@ $(document).on('change', '.changeableSelect', function () {
   // console.log("lastCharIsId -> " + lastCharIsId);
 
   // * Recupere id du Quantity
-  var myQuantityId = $("#quantityPlacePanier" + numberOfLaneBasket).attr('id');
+  // var myQuantityId = $("#quantityPlacePanier" + numberOfLaneBasket).attr('id');
   // console.log("quantity ID : " + myQuantityId);
 
   // * Calcul for generated
@@ -191,29 +196,32 @@ function saveBasket() {
 }
 
 function getCart() {
-
-
   // get the json from local storage
   // let info = window.localStorage.getItem("reservations");
 
-
-  
-  
   // * get the json from local storage and Transform it back to an Object
   let mySave = JSON.parse(window.localStorage.getItem("reservations"));
-  
+
   // check if localStorage is empty
   if (window.localStorage.length == 0) {
-    
-
-
+    console.log("Pas de sauvegarde");
   } else {
-    
-    for (let i = 0; i < mySave.length; i++ ) {
-      console.log("t1 " , mySave[i]['tarif']);
-  
+
+    for (let i = 0; i < mySave.length; i++) {
+      // affichage data
+      // console.log("t1 ", mySave[i]['tarif']);
+      
+      // change select value and trigger onchange
+      // $("#tarifNumber" + i).val("- 14 ans").change();
+      $("#tarifNumber" + i).val(mySave[i]['tarif']).change();
+      $("#seanceNumber" + i).val(mySave[i]['seance']).change();
+      $("#quantityPlacePanier" + i).val(mySave[i]['quantite']).change();
+
+
+      
+
     }
-    
+
   }
 
 
@@ -240,3 +248,13 @@ function getCart() {
   // $('#divtoshowarray').html(output);
 
 }
+
+// ["Plein tarif", "- 14 ans"]
+
+// --------------------
+
+// change select value and trigger onchange
+// function valueCh(){
+//   $( "#tarifNumber0" ).val( "- 14 ans" ).change();
+
+// }
