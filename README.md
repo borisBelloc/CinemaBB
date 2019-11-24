@@ -3,7 +3,7 @@ Single page website for a fake cinema.
 
 Contain a basket with saving in LocalStorage and auto-load when the website page is opened.
 
-See file _Specifications-TP-HTML-CSS.png_ for the objective
+See file _Specifications-TP-HTML-CSS.png_ for the objective.
 
 Technos used :
 ====
