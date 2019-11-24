@@ -16,28 +16,39 @@ var numberOfLaneBasket = 1;
 var calculAchatTotal = 0;
 var priceToAdd;
 
+// * get the json from local Storage and Transform it back to an Object
+let mySave = JSON.parse(window.localStorage.getItem("reservations"));
+
+
+
 /**
  * generate x selects for numberOfLaneBasket
  */
-for (let i = 1; i <= numberOfLaneBasket ; i++ ) {
-  generateEmptySelect();
+if (window.localStorage.length !== 0) {
+  console.log("size :" , mySave.length);
+  numberOfLaneBasket = mySave.length;
+}
+
+
+for (let i = 1; i <= numberOfLaneBasket; i++) {
+  generateEmptySelect(i);
 }
 
 // * BTN NOUVELLE RESA
 $('#incrementBasket').click(function () {
   numberOfLaneBasket += 1;
   $("#countLine").text(numberOfLaneBasket);
-  generateEmptySelect();
+  generateEmptySelect(numberOfLaneBasket);
 });
 // * BTN DELETE ALL RESA
 $('#deleteBasket').click(function () {
   window.localStorage.clear();
-  for (let i = 0; i <= numberOfLaneBasket; i++) {
+  for (let i = 1; i <= numberOfLaneBasket; i++) {
     $("#trId" + i).remove();
   }
-  numberOfLaneBasket = 0;
+  numberOfLaneBasket = 1;
   $("#achatTotal").text(0)
-  generateEmptySelect();
+  generateEmptySelect(numberOfLaneBasket);
 });
 
 // * BTN SAVE ALL RESA
@@ -49,7 +60,7 @@ $('#saveBasket').click(function () {
 /**
  * Generate Empty Select -> window.localStorage.length == 0
  */
-function generateEmptySelect() {
+function generateEmptySelect(numberOfLaneBasket) {
   var trContainer = document.createElement("tr");
 
 
@@ -157,13 +168,14 @@ $(document).on('change', '.changeableSelect', function () {
     $("#calculTarifTotal" + lastCharIsId).text((priceList[indexFirstGen][indexSecondGen] * $("#quantityPlacePanier" + numberOfLaneBasket).val()) + " €");
   }
   calculAchatTotal = 0;
-  for (let i = 0; i <= numberOfLaneBasket; i++) {
+  for (let i = 1; i <= numberOfLaneBasket; i++) {
     // calculAchatTotal = 0;
     priceToAdd = parseInt($("#calculTarifTotal" + i).text()); // parseInt -> s'arrette au premier non int, contrairement a Number() qui renverrait NaN
-    // console.log("+priceToAdd " + typeof calculAchatTotal);
-    // console.log("priceToAdd " + priceToAdd);
 
-    calculAchatTotal += priceToAdd;
+    // if priceToAdd NaN -> become 0
+    priceToAddChecked = priceToAdd || 0;
+
+    calculAchatTotal += priceToAddChecked;
     // console.log("calculAchatTotal " + calculAchatTotal);
     // console.log("priceToAdd++ " +typeof calculAchatTotal);
   }
@@ -177,7 +189,7 @@ function saveBasket() {
   let rows = document.querySelectorAll("#tableResa tr");
   let data = [];
 
-  for (i = 0; i < rows.length - 1; i++) {
+  for (i = 1; i <= rows.length - 1; i++) {
     let tarif = document.querySelector("#tarifNumber" + i).value;
     let seance = document.querySelector("#seanceNumber" + i).value;
     let quantite = document.querySelector("#quantityPlacePanier" + i).value;
@@ -199,8 +211,7 @@ function getCart() {
   // get the json from local storage
   // let info = window.localStorage.getItem("reservations");
 
-  // * get the json from local storage and Transform it back to an Object
-  let mySave = JSON.parse(window.localStorage.getItem("reservations"));
+
 
   // check if localStorage is empty
   if (window.localStorage.length == 0) {
@@ -210,7 +221,7 @@ function getCart() {
     for (let i = 0; i < mySave.length; i++) {
       // affichage data
       // console.log("t1 ", mySave[i]['tarif']);
-      
+
       // change select value and trigger onchange
       // $("#tarifNumber" + i).val("- 14 ans").change();
       $("#tarifNumber" + i).val(mySave[i]['tarif']).change();
@@ -218,7 +229,7 @@ function getCart() {
       $("#quantityPlacePanier" + i).val(mySave[i]['quantite']).change();
 
 
-      
+
 
     }
 
