@@ -11,6 +11,15 @@ $.each(seances, function (i, p) {
   $('#panierSeances').append($('<option></option>').val(p).html(p));
 });
 
+// -----------------
+  // Tableaux de prix
+  var priceList = [
+    [10, 12, 12.50],
+    [5, 6, 6]
+  ]
+// -----------------
+
+
 // -------- BASKET
 var numberOfLaneBasket = 1;
 var calculAchatTotal = 0;
@@ -21,9 +30,8 @@ let mySave = JSON.parse(window.localStorage.getItem("reservations"));
 
 
 
-/**
- * generate x selects for numberOfLaneBasket
- */
+
+ // generate x selects for numberOfLaneBasket
 if (window.localStorage.length !== 0) {
   console.log("size :" , mySave.length);
   numberOfLaneBasket = mySave.length;
@@ -63,8 +71,6 @@ $('#saveBasket').click(function () {
 function generateEmptySelect(numberOfLaneBasket) {
   var trContainer = document.createElement("tr");
 
-
-
   // * add an id to the <tr>
   $(trContainer).attr('id', 'trId' + numberOfLaneBasket);
 
@@ -85,7 +91,7 @@ function generateEmptySelect(numberOfLaneBasket) {
 
   // * Generated Quantity selector
   $(trContainer).append($(
-    '<td><input id="quantityPlacePanier' + numberOfLaneBasket + '" class="panierQuantity changeableSelect form-control form-control-sm" type="number" value="0" min="0" max="20" step="1" /></td>'
+    '<td><input id="quantityInBasket' + numberOfLaneBasket + '" class="panierQuantity changeableSelect form-control form-control-sm" type="number" value="0" min="0" max="20" step="1" /></td>'
   ));
 
   // * Generated Span Prix unitaire
@@ -114,62 +120,65 @@ function generateEmptySelect(numberOfLaneBasket) {
     $('#seanceNumber' + numberOfLaneBasket).append($('<option></option>').val(p).html(p));
   });
 
+  // * Write Prix Unitaire of current lane
+  // recupere les index requis pour trouver le prix associés dans le tableau
+  var indexFirstGen = $("#tarifNumber" + numberOfLaneBasket).prop('selectedIndex');
+  var indexSecondGen = $("#seanceNumber" + numberOfLaneBasket).prop('selectedIndex');
+  $("#calculTarif" + numberOfLaneBasket).text(priceList[indexFirstGen][indexSecondGen] + " €");
+
 }
 
-// * surveille seulement 1 id
+// * surveille seulement 1 id onChange
 // $("#panierSelectTarifs").change(function() {
 
-// * surveille tous les 'changeableSelect'
+// * surveille tous les 'changeableSelect' onChange
 $(document).on('change', '.changeableSelect', function () {
 
   // * Calcul generated lane
-  var indexFirstGen = $("#tarifNumber" + numberOfLaneBasket).prop('selectedIndex');
-  // console.log("indexFirstGen -- " + indexFirstGen);
-  var indexSecondGen = $("#seanceNumber" + numberOfLaneBasket).prop('selectedIndex');
-  // console.log("indexSecondGen -- " + indexSecondGen);
-
-  // Tableaux de prix
-  var priceList = [
-    [10, 12, 12.50],
-    [5, 6, 6]
-  ]
 
 
   // * my ID (recuperation id)
-  // TODO: Fusionner ces 4 lignes en 2 ?
   // * regarde qui a lancé le "onChange"
   var myElemId = $(this).attr('id');
-  // console.log("myElemId >-> " + myElemId);
+  console.log("myElemId >-> " + myElemId);
   // * value de celui qui vient de lancer le "onChange"
   var valueSelected = $("#" + myElemId).val();
-  // console.log("valueSelected-- " + valueSelected);
+  console.log("valueSelected-- " + valueSelected);
 
   // * Recupere le int de l'id ...
   var lastCharIsId = myElemId.substr(myElemId.length - 1);
-  // console.log("lastCharIsId -> " + lastCharIsId);
+  console.log("lastCharIsId -> " + lastCharIsId);
+
+  // recupere les index requis pour trouver le prix associés dans le tableau
+  var indexFirstGen = $("#tarifNumber" + lastCharIsId).prop('selectedIndex');
+  var indexSecondGen = $("#seanceNumber" + lastCharIsId).prop('selectedIndex');
+
 
   // * Recupere id du Quantity
-  // var myQuantityId = $("#quantityPlacePanier" + numberOfLaneBasket).attr('id');
+  // var myQuantityId = $("#quantityInBasket" + numberOfLaneBasket).attr('id');
   // console.log("quantity ID : " + myQuantityId);
 
-  // * Calcul for generated
+  // * Prix Unitaire
   $("#calculTarif" + lastCharIsId).text(priceList[indexFirstGen][indexSecondGen] + " €");
   // $("#calculTarifTotal" + lastCharIsId).text("Prix total : " + (priceList[indexFirstGen][indexSecondGen] * (quantityGen ? quantityGen : 1)));
 
-  // console.log('iii ' + $("#quantityPlacePanier" + lastCharIsId).attr('id'));
+  // console.log('iii ' + $("#quantityInBasket" + lastCharIsId).attr('id'));
 
+  // * Prix total
   // est-on sur un Quantity ?
   // TODO: if else inutile ? la ligne du else marche partout ?
-  if (myElemId == $("#quantityPlacePanier" + lastCharIsId).attr('id')) {
-    // console.log("Oui, on a touché la quantity");
-    $("#calculTarifTotal" + lastCharIsId).text((priceList[indexFirstGen][indexSecondGen] * valueSelected) + " €");
-  } else {
-    // console.log("Non, on a pas touché la quantity");
-    $("#calculTarifTotal" + lastCharIsId).text((priceList[indexFirstGen][indexSecondGen] * $("#quantityPlacePanier" + numberOfLaneBasket).val()) + " €");
-  }
+  // if (myElemId == $("#quantityInBasket" + lastCharIsId).attr('id')) {
+  //   // console.log("Oui, on a touché la quantity");
+  //   $("#calculTarifTotal" + lastCharIsId).text((priceList[indexFirstGen][indexSecondGen] * valueSelected) + " €");
+  // } else {
+  //   // console.log("Non, on a pas touché la quantity");
+  //   $("#calculTarifTotal" + lastCharIsId).text((priceList[indexFirstGen][indexSecondGen] * $("#quantityInBasket" + numberOfLaneBasket).val()) + " €");
+  // }
+   $("#calculTarifTotal" + lastCharIsId).text((priceList[indexFirstGen][indexSecondGen] * $("#quantityInBasket" + lastCharIsId).val()) + " €");
+
+
   calculAchatTotal = 0;
   for (let i = 1; i <= numberOfLaneBasket; i++) {
-    // calculAchatTotal = 0;
     priceToAdd = parseInt($("#calculTarifTotal" + i).text()); // parseInt -> s'arrette au premier non int, contrairement a Number() qui renverrait NaN
 
     // if priceToAdd NaN -> become 0
@@ -192,7 +201,7 @@ function saveBasket() {
   for (i = 1; i <= rows.length - 1; i++) {
     let tarif = document.querySelector("#tarifNumber" + i).value;
     let seance = document.querySelector("#seanceNumber" + i).value;
-    let quantite = document.querySelector("#quantityPlacePanier" + i).value;
+    let quantite = document.querySelector("#quantityInBasket" + i).value;
     let prixUnitaire = document.querySelector("#calculTarif" + i).textContent;
     let prixTotal = document.querySelector("#calculTarifTotal" + i).textContent;
     let info = {
@@ -226,7 +235,7 @@ function getCart() {
       // $("#tarifNumber" + i).val("- 14 ans").change();
       $("#tarifNumber" + i).val(mySave[i]['tarif']).change();
       $("#seanceNumber" + i).val(mySave[i]['seance']).change();
-      $("#quantityPlacePanier" + i).val(mySave[i]['quantite']).change();
+      $("#quantityInBasket" + i).val(mySave[i]['quantite']).change();
 
 
 
