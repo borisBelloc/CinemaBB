@@ -165,15 +165,6 @@ $(document).on('change', '.changeableSelect', function () {
   // console.log('iii ' + $("#quantityInBasket" + lastCharIsId).attr('id'));
 
   // * Prix total
-  // est-on sur un Quantity ?
-  // TODO: if else inutile ? la ligne du else marche partout ?
-  // if (myElemId == $("#quantityInBasket" + lastCharIsId).attr('id')) {
-  //   // console.log("Oui, on a touché la quantity");
-  //   $("#calculTarifTotal" + lastCharIsId).text((priceList[indexFirstGen][indexSecondGen] * valueSelected) + " €");
-  // } else {
-  //   // console.log("Non, on a pas touché la quantity");
-  //   $("#calculTarifTotal" + lastCharIsId).text((priceList[indexFirstGen][indexSecondGen] * $("#quantityInBasket" + numberOfLaneBasket).val()) + " €");
-  // }
    $("#calculTarifTotal" + lastCharIsId).text((priceList[indexFirstGen][indexSecondGen] * $("#quantityInBasket" + lastCharIsId).val()) + " €");
 
 
