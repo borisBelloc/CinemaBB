@@ -12,11 +12,11 @@ $.each(seances, function (i, p) {
 });
 
 // -----------------
-  // Tableaux de prix
-  var priceList = [
-    [10, 12, 12.50],
-    [5, 6, 6]
-  ]
+// Tableaux de prix
+var priceList = [
+  [10, 12, 12.50],
+  [5, 6, 6]
+]
 // -----------------
 
 
@@ -31,9 +31,9 @@ let mySave = JSON.parse(window.localStorage.getItem("reservations"));
 
 
 
- // generate x selects for numberOfLaneBasket
+// generate x selects for numberOfLaneBasket
 if (window.localStorage.length !== 0) {
-  console.log("size :" , mySave.length);
+  console.log("size :", mySave.length);
   numberOfLaneBasket = mySave.length;
 }
 
@@ -120,11 +120,13 @@ function generateEmptySelect(numberOfLaneBasket) {
     $('#seanceNumber' + numberOfLaneBasket).append($('<option></option>').val(p).html(p));
   });
 
-  // * Write Prix Unitaire of current lane
   // recupere les index requis pour trouver le prix associés dans le tableau
   var indexFirstGen = $("#tarifNumber" + numberOfLaneBasket).prop('selectedIndex');
   var indexSecondGen = $("#seanceNumber" + numberOfLaneBasket).prop('selectedIndex');
+  // * Write Prix Unitaire of current lane at creation
   $("#calculTarif" + numberOfLaneBasket).text(priceList[indexFirstGen][indexSecondGen] + " €");
+  // * Prix total of current lane at creation
+  $("#calculTarifTotal" + numberOfLaneBasket).text((priceList[indexFirstGen][indexSecondGen] * $("#quantityInBasket" + numberOfLaneBasket).val()) + " €");
 
 }
 
@@ -165,7 +167,7 @@ $(document).on('change', '.changeableSelect', function () {
   // console.log('iii ' + $("#quantityInBasket" + lastCharIsId).attr('id'));
 
   // * Prix total
-   $("#calculTarifTotal" + lastCharIsId).text((priceList[indexFirstGen][indexSecondGen] * $("#quantityInBasket" + lastCharIsId).val()) + " €");
+  $("#calculTarifTotal" + lastCharIsId).text((priceList[indexFirstGen][indexSecondGen] * $("#quantityInBasket" + lastCharIsId).val()) + " €");
 
 
   calculAchatTotal = 0;
