@@ -191,22 +191,42 @@ function saveBasket() {
 }
 
 function getCart() {
+
+
   // get the json from local storage
   // let info = window.localStorage.getItem("reservations");
 
+
+  
+  
   // * get the json from local storage and Transform it back to an Object
   let mySave = JSON.parse(window.localStorage.getItem("reservations"));
-  console.log(mySave);
   
-  // * enumerate the properties of a JavaScript object
-  var propertyName;
-  for (propertyName in mySave) {
-    // console.log("propertyName " + propertyName);
-    console.log(mySave[propertyName]);
-    var currentTarif = mySave.getItem('tarif');
-    console.log("cc " , currentTarif);
+  // check if localStorage is empty
+  if (window.localStorage.length == 0) {
+    
+
+
+  } else {
+    
+    for (let i = 0; i < mySave.length; i++ ) {
+      console.log("t1 " , mySave[i]['tarif']);
+  
+    }
     
   }
+
+
+
+
+
+  // * enumerate the properties of a JavaScript object
+  // var savedObject;
+  // for (savedObject in mySave) {
+  //   console.log(mySave[savedObject]);
+
+  //   console.log(mySave[0].getItem('tarif'));
+  // }
 
   // var output = '';
   // for (var key in info) {
