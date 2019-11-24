@@ -28,12 +28,9 @@ var priceToAdd;
 // * get the json from local Storage and Transform it back to an Object
 let mySave = JSON.parse(window.localStorage.getItem("reservations"));
 
-
-
-
 // generate x selects for numberOfLaneBasket
 if (window.localStorage.length !== 0) {
-  console.log("size :", mySave.length);
+  // console.log("size :", mySave.length);
   numberOfLaneBasket = mySave.length;
 }
 
@@ -127,7 +124,6 @@ function generateEmptySelect(numberOfLaneBasket) {
   $("#calculTarif" + numberOfLaneBasket).text(priceList[indexFirstGen][indexSecondGen] + " €");
   // * Prix total of current lane at creation
   $("#calculTarifTotal" + numberOfLaneBasket).text((priceList[indexFirstGen][indexSecondGen] * $("#quantityInBasket" + numberOfLaneBasket).val()) + " €");
-
 }
 
 // * surveille seulement 1 id onChange
@@ -142,14 +138,14 @@ $(document).on('change', '.changeableSelect', function () {
   // * my ID (recuperation id)
   // * regarde qui a lancé le "onChange"
   var myElemId = $(this).attr('id');
-  console.log("myElemId >-> " + myElemId);
+  // console.log("myElemId >-> " + myElemId);
   // * value de celui qui vient de lancer le "onChange"
   var valueSelected = $("#" + myElemId).val();
-  console.log("valueSelected-- " + valueSelected);
+  // console.log("valueSelected-- " + valueSelected);
 
   // * Recupere le int de l'id ...
   var lastCharIsId = myElemId.substr(myElemId.length - 1);
-  console.log("lastCharIsId -> " + lastCharIsId);
+  // console.log("lastCharIsId -> " + lastCharIsId);
 
   // recupere les index requis pour trouver le prix associés dans le tableau
   var indexFirstGen = $("#tarifNumber" + lastCharIsId).prop('selectedIndex');
@@ -209,65 +205,19 @@ function saveBasket() {
   localStorage.setItem("reservations", JSON.stringify(data));
 }
 
-function getCart() {
-  // get the json from local storage
-  // let info = window.localStorage.getItem("reservations");
 
-
-
-  // check if localStorage is empty
+// ! getCart() autolunch function()
+$(function() {
   if (window.localStorage.length == 0) {
     console.log("Pas de sauvegarde");
   } else {
 
     for (let i = 0; i < mySave.length; i++) {
-      // affichage data
-      // console.log("t1 ", mySave[i]['tarif']);
-
+      // my id start at 1 and not 0
+      id = i+1;
       // change select value and trigger onchange
-      // $("#tarifNumber" + i).val("- 14 ans").change();
-      $("#tarifNumber" + i).val(mySave[i]['tarif']).change();
-      $("#seanceNumber" + i).val(mySave[i]['seance']).change();
-      $("#quantityInBasket" + i).val(mySave[i]['quantite']).change();
-
-
-
-
+      $("#tarifNumber" + id).val(mySave[i]['tarif']).change();
+      $("#seanceNumber" + id).val(mySave[i]['seance']).change();
+      $("#quantityInBasket" + id).val(mySave[i]['quantite']).change();
     }
-
-  }
-
-
-
-
-
-  // * enumerate the properties of a JavaScript object
-  // var savedObject;
-  // for (savedObject in mySave) {
-  //   console.log(mySave[savedObject]);
-
-  //   console.log(mySave[0].getItem('tarif'));
-  // }
-
-  // var output = '';
-  // for (var key in info) {
-  //   if (info.hasOwnProperty(key)) {
-  //     output = output + (key +  + info[key]) + ':<br>';
-  //   }
-  // }
-
-  // console.log("restult -> " + output);
-
-  // $('#divtoshowarray').html(output);
-
-}
-
-// ["Plein tarif", "- 14 ans"]
-
-// --------------------
-
-// change select value and trigger onchange
-// function valueCh(){
-//   $( "#tarifNumber0" ).val( "- 14 ans" ).change();
-
-// }
+}});
