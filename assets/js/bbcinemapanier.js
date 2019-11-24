@@ -25,6 +25,7 @@ $('#incrementBasket').click(function () {
 });
 // * BTN DELETE ALL RESA
 $('#deleteBasket').click(function () {
+  window.localStorage.clear();
   for (let i = 0; i <= numberOfLaneBasket; i++) {
     $("#trId" + i).remove();
   }
@@ -32,6 +33,10 @@ $('#deleteBasket').click(function () {
   $("#achatTotal").text(0)
   generateSelect();
 });
+
+// function deleteCart(){
+//   window.localStorage.clear();
+// }
 
 
 // * BTN SAVE ALL RESA
@@ -186,25 +191,22 @@ function saveBasket() {
 }
 
 function getCart() {
-  // Print the json
-  let info = localStorage.getItem("reservations");
-  console.log(info);
-  // console.log("i" + info.length);
+  // get the json from local storage
+  // let info = window.localStorage.getItem("reservations");
 
-
-  // TODO: séparer les objets contenus dans DATA afin de les afficher 1 par row
-  // ci dessous pas fini; pas reussis a séparer les objects lorsqu'on a plusieurs reservations
-
-  // * Transform localStorage back to an Object
-  // TODO: crash because there is 2 objects...
-  let mySave = JSON.parse(window.localStorage.getItem('reservations'));
-
+  // * get the json from local storage and Transform it back to an Object
+  let mySave = JSON.parse(window.localStorage.getItem("reservations"));
+  console.log(mySave);
+  
   // * enumerate the properties of a JavaScript object
-  // var propertyName;
-  // for (propertyName in mySave) {
-  //   console.log("propertyName " + propertyName);
-  //   console.log(mySave[propertyName]);
-  // }
+  var propertyName;
+  for (propertyName in mySave) {
+    // console.log("propertyName " + propertyName);
+    console.log(mySave[propertyName]);
+    var currentTarif = mySave.getItem('tarif');
+    console.log("cc " , currentTarif);
+    
+  }
 
   // var output = '';
   // for (var key in info) {
